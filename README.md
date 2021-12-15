@@ -41,7 +41,7 @@ git push
 
 ## git Theme
 
-[내가 사용한 테마]{github.com/thelehhman/plainwhite-jekyll}
+[내가 사용한 테마](github.com/thelehhman/plainwhite-jekyll)
 
 1. 선택한 테마 링크로 이동
 
