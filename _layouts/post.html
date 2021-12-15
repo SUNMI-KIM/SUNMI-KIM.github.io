@@ -16,17 +16,15 @@ layout: default
     </ul>
     {%- endif -%}
   </div>
-  <div class="post">
-    {{ content }}
-   <div>
-    <script src="https://utteranc.es/client.js"
+  <script src="https://utteranc.es/client.js"
         repo="[ENTER REPO HERE]"
         issue-term="pathname"
         theme="github-dark"
         crossorigin="anonymous"
         async>
     </script>
-    </div>
+  <div class="post">
+    {{ content }}
   </div>
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
