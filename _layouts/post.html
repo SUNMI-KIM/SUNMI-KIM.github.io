@@ -1,41 +1,39 @@
 ---
 layout: default
 ---
-
-{% if page.intro %}
-<div class="intro">
-    <div class="columns is-centered">
-        {% if page.intro_image %}
-        <div class="column is-8-desktop is-6-tablet">
-            <figure class="image {% if page.intro_image_ratio %} {{ page.intro_image_ratio }} {% else %} is-16by9 {% endif %}">
-                <img src="{{ page.intro_image | prepend: site.baseurl }}" alt="{{ page.title }}" />
-            </figure>
-        </div>
-        {% endif %}
-        <div class="column is-4-desktop is-6-tablet">
-            <p class="title is-1">{{ page.intro }}</p>
-        </div>
-    </div>
+{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
+<div class="post-container">
+  <a class="post-link" href="{{ page.url | relative_url }}">
+    <h2 class="post-title">{{ page.title | escape }}</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
+    {%- if page.categories.size > 0 -%}
+    <ul class="post-categories">
+      {%- for tag in page.categories -%}
+      <li>{{ tag }}</li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+  </div>
+  <div class="post">
+    {{ content }}
+  </div>
+  {%- if site.plainwhite.disqus_shortname -%}
+  <div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = '{{ page.url | absolute_url }}';
+      this.page.identifier = '{{ page.url | absolute_url }}';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://{{ site.plainwhite.disqus_shortname }}.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript>
+  {%- endif -%}
 </div>
-{% endif %}
-
-<div class="columns is-centered">
-    <div class="column is-8-desktop is-10-tablet">
-        <div class="content">
-            <p><strong>Published: {{ page.date | date: "%b %-d, %Y" }} by {{ page.author }}</strong></p>
-            {{ content }}
-        </div>
-
-        <div class="tags">
-            {% for tag in page.tags %}
-            <span class="tag is-primary">{{ tag }}</span>
-            {% endfor %}
-        </div>
-
-        {% assign author = site.authors | where: 'name', page.author | first %}
-        {% if author %}
-        {% include author-media.html %}
-        {% endif %}
-    </div>
-</div>
-
