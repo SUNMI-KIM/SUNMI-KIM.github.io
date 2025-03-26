@@ -1,6 +1,6 @@
 # Git Blog 제작 과정
 
-[SUNMI Git Blog](SUNMI.github.io)
+[SUNMI Git Blog](https://SUNMI.github.io)
 
 ## github repository 생성
 
