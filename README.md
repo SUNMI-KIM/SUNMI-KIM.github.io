@@ -1,5 +1,7 @@
 # Git Blog 제작 과정
 
+[SUNMI Git Blog](SUNMI.github.io)
+
 ## github repository 생성
 
 1. 새로운 Repository 만들기
